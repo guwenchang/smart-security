@@ -28,8 +28,6 @@ public class TestController {
     private final JwtOperator operator;
 
     /**
-     * 演示如何获取当前登录用户信息
-     * - 该路径需要具备user或admin权限才可访问，详见application.yml
      *
      * @return 用户信息
      */
@@ -40,14 +38,13 @@ public class TestController {
     }
 
     /**
-     * 演示基于注解的权限控制
      *
-     * @return 如果有权限返回 亲，你同时有user、admin角色..
+     * @return
      */
     @GetMapping("/admin")
     @Permission("admin")
-    public String annotationTest() {
-        return "亲，你同时有user、admin角色..";
+    public String admin() {
+        return "你有admin权限";
     }
 
     /**
