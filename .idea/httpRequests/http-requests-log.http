@@ -1,0 +1,65 @@
+GET http://localhost:9009/user
+Authorization: Bearer 第一步产生的token
+
+<> 2019-04-22T065402.401.txt
+
+###
+
+GET http://localhost:9009/user
+Authorization: Bearer 第一步产生的token
+
+<> 2019-04-22T064934.500.html
+
+###
+
+GET http://localhost:9009/user
+Authorization: Bearer 第一步产生的token
+
+<> 2019-04-22T064248.500.html
+
+###
+
+GET http://localhost:9009/login
+
+<> 2019-04-22T064244.200.txt
+
+###
+
+GET http://localhost:9009/admin
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtcyI6WyJ1c2VyIl0sImlkIjoxLCJ1c2VybmFtZSI6IuW8oOS4iSIsImlhdCI6MTU1NTkyNzUyMCwiZXhwIjoxNTU3MTM3MTIwfQ.SDHbGkxIct8-AM4A8yNxcirGdVWfjwfhU6RPoULrGpJnJNirZR-YGaryHd8BXixvR9Ue7Kx_PiGMTX1kZmlUNA
+
+<> 2019-04-22T060743.500.json
+
+###
+
+GET http://localhost:9009/user
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtcyI6WyJ1c2VyIl0sImlkIjoxLCJ1c2VybmFtZSI6IuW8oOS4iSIsImlhdCI6MTU1NTkyNzUyMCwiZXhwIjoxNTU3MTM3MTIwfQ.SDHbGkxIct8-AM4A8yNxcirGdVWfjwfhU6RPoULrGpJnJNirZR-YGaryHd8BXixvR9Ue7Kx_PiGMTX1kZmlUNA
+
+<> 2019-04-22T060702.200.json
+
+###
+
+GET http://localhost:9009/login
+
+<> 2019-04-22T060520.200.txt
+
+###
+
+GET http://localhost:9009/login
+
+<> 2019-04-22T060211.500.html
+
+###
+
+GET http://localhost:9009/login
+
+<> 2019-04-22T055809.500.html
+
+###
+
+GET http://localhost:9009/login
+
+<> 2019-04-22T055654.500.html
+
+###
+

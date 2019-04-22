@@ -1,5 +1,6 @@
 package com.smart.security.autoconfigure;
 
+import com.smart.security.advice.SmartSecurityExceptionHandler;
 import com.smart.security.config.SmartSecurityProperties;
 import com.smart.security.jwt.JwtOperator;
 import com.smart.security.jwt.UserOperator;
@@ -28,6 +29,12 @@ public class SmartSecurityConfiguration {
     @ConditionalOnMissingBean
     public UserOperator userOperator(JwtOperator jwtOperator) {
         return new UserOperator(jwtOperator);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SmartSecurityExceptionHandler smartSecurityExceptionHandler() {
+        return new SmartSecurityExceptionHandler();
     }
 
 }
