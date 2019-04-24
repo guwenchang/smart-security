@@ -56,7 +56,7 @@ public class TestController {
     @Login(action = Action.SKIP)
     public String loginReturnToken() {
         User user = User.builder()
-                .id(1)
+                .userId(1)
                 .username("张三")
                 .perms(Arrays.asList("user"))
                 .build();

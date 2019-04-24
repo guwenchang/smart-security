@@ -4,8 +4,6 @@ GET http://localhost:9009/login
 
 ### 第二步：请求带上token，请求/user端点
 GET http://localhost:9009/user
-Authorization:Bearer 第一步产生的token
-
 
 ### 第三步：请求带上token，请求/admin
 GET http://localhost:9009/admin

@@ -23,7 +23,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @SuppressWarnings("WeakerAccess")
 public class JwtOperator {
-    public static final String USER_ID = "id";
+    public static final String USER_ID = "userId";
     public static final String USERNAME = "username";
     public static final String PERMS = "perms";
     private final SmartSecurityProperties smartSecurityProperties;
@@ -56,7 +56,7 @@ public class JwtOperator {
 
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>(3);
-        claims.put(USER_ID, user.getId());
+        claims.put(USER_ID, user.getUserId());
         claims.put(USERNAME, user.getUsername());
         claims.put(PERMS, user.getPerms());
         Date createdTime = new Date();

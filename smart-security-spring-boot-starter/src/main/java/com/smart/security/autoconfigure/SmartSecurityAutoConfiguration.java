@@ -2,8 +2,6 @@ package com.smart.security.autoconfigure;
 
 
 import com.smart.security.interceptor.AuthInterceptor;
-import com.smart.security.jwt.UserOperator;
-import lombok.Data;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,12 +16,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableAutoConfiguration
 @Import(SmartSecurityConfiguration.class)
-@Data
 public class SmartSecurityAutoConfiguration implements WebMvcConfigurer {
-    private final UserOperator userOperator;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor(userOperator));
+        registry.addInterceptor(new AuthInterceptor());
     }
 }

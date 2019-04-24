@@ -10,6 +10,10 @@ public interface ConstantsSecurity {
      * 请求头
      */
     String AUTHORIZATION_HEADER = "Authorization";
+    /**
+     * token 在cookie中的值
+     */
+    String TOKEN_COOKIE_KEY = "auth_token";
 
     /**
      * Bearer header

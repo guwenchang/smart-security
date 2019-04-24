@@ -4,6 +4,7 @@ package com.smart.security.interceptor;
 import com.smart.security.annotation.Action;
 import com.smart.security.annotation.Login;
 import com.smart.security.annotation.Permission;
+import com.smart.security.context.SecurityContextHolder;
 import com.smart.security.exception.SmartSecurityException;
 import com.smart.security.jwt.User;
 import com.smart.security.jwt.UserOperator;
@@ -24,11 +25,8 @@ import java.util.List;
  * @author guwenchang
  * @date 2019-04-22 16:28
  */
-@RequiredArgsConstructor
 @Slf4j
 public class AuthInterceptor extends HandlerInterceptorAdapter {
-    private final UserOperator userOperator;
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -37,9 +35,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             //默认都需要权限
             Login needLogin = handlerMethod.getMethodAnnotation(Login.class);
             if (needLogin == null || needLogin.action().equals(Action.NORMAL)) {
-                User user = userOperator.getUser();
+                User user = SecurityContextHolder.getContext();
                 //登录校验
-                if (user == null) {
+                if (user.getUserId() != null) {
                     log.warn("需要登陆:{},ParameterMap:{}",request.getRequestURI(),request.getParameterMap());
                     throw new SmartSecurityException("需要登陆:" + request.getRequestURI() + ",ParameterMap:" + request.getParameterMap());
                 }

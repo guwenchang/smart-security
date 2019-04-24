@@ -11,6 +11,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class UserOperator {
         try {
             HttpServletRequest request = getRequest();
             String token = getTokenFromRequest(request);
+            if (StringUtils.isEmpty(token)){
+                return null;
+            }
             Boolean isValid = jwtOperator.validateToken(token);
             if (!isValid) {
                 return null;
@@ -58,16 +62,26 @@ public class UserOperator {
         Object username = claims.get(JwtOperator.USERNAME);
 
         return User.builder()
-                .id((Integer) userId)
+                .userId((Integer) userId)
                 .username((String) username)
                 .perms((List<String>) perms)
                 .build();
     }
 
     private String getTokenFromRequest(HttpServletRequest request) {
+        //先从cookie中取
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null){
+            for (Cookie cookie : cookies) {
+                if (ConstantsSecurity.TOKEN_COOKIE_KEY.equals(cookie.getName())){
+                    return cookie.getValue();
+                }
+            }
+        }
+        //如果cookie中没有，则从header中取
         String header = request.getHeader(ConstantsSecurity.AUTHORIZATION_HEADER);
         if (StringUtils.isEmpty(header)) {
-            throw new SmartSecurityException("没有找到名为Authorization的header");
+            return null;
         }
         if (!header.startsWith(ConstantsSecurity.BEARER)) {
             throw new SmartSecurityException("token必须以'Bearer '开头");

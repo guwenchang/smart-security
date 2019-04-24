@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class User {
-    private Integer id;
+    private Integer userId;
     private String username;
     private List<String> perms;
 }
